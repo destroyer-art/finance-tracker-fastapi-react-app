@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 const api: AxiosInstance = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://fastapi-react-app-backend.onrender.com/",
 });
 
 export default api;
