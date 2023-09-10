@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    'https://finance-tracker-fastapi-react.netlify.app/',
+    'https://finance-tracker-fastapi-react.netlify.app',
 ]
 
 app.add_middleware(
