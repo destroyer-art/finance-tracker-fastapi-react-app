@@ -10,6 +10,7 @@ app = FastAPI()
 
 origins = [
     'https://finance-tracker-fastapi-react.netlify.app',
+    'http://127.0.0.1:5173',
 ]
 
 app.add_middleware(
@@ -58,3 +59,13 @@ async def create_transaction(transaction: TransactionBase, db: Session = Depends
 async def read_transactions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     transaction = db.query(models.Transaction).offset(skip).limit(limit).all()
     return transaction
+
+@app.delete("/deletetransaction/{transaction_id}", response_model=TransactionModel)
+async def delete_transaction(transaction_id: int, db: Session = Depends(get_db)):
+    db_transaction = db.query(models.Transaction).filter(models.Transaction.id == transaction_id).first()
+    if db_transaction is None:
+        raise HTTPException(status_code=404, detail="Transaction not found")
+    
+    db.delete(db_transaction)
+    db.commit()
+    return db_transaction
