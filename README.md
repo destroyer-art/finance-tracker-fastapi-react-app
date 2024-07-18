@@ -35,7 +35,7 @@ This project consists of both a frontend React.js application and a backend Fast
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/codebyaadi/fastapi-react-app.git
+   git clone https://github.com/destroyer-art/fastapi-react-app.git
    ```
 
 2. Change to the project directory:
